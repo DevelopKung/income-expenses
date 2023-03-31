@@ -14,12 +14,12 @@
           <v-row>
             <v-col sm="6" cols="12">
               <v-btn color="success" block rounded @click="$router.push('/income/new')">
-                เพิ่มรายจ่าย  <v-icon right>fas fa-plus-circle</v-icon>
+                เพิ่มรายรับ <v-icon right>fas fa-plus-circle</v-icon>
               </v-btn>
             </v-col>
             <v-col sm="6" cols="12">
               <v-btn color="error" block rounded @click="$router.push('/expense/new')">
-                เพิ่มรายรับ <v-icon right>fas fa-minus-circle</v-icon>
+                เพิ่มรายจ่าย <v-icon right>fas fa-minus-circle</v-icon>
               </v-btn>
             </v-col>
           </v-row>
@@ -28,22 +28,27 @@
 
     </div>
   </div>
-  <v-card v-if="datas && datas.length>0" class="pa-4">
-    <v-row v-for="(item,index) in datas" :key="index">
-      <v-col v-if="item.type&&item.type.length > 0" cols="auto">
-        <v-btn :class="item.type[0].inc_exp_type_color" :elevation="0" fab dark small>
-          <v-icon dark small> {{ item.type[0].inc_exp_type_icon }} </v-icon>
-        </v-btn>
-      </v-col>
-      <v-col class="align-self-center">
-        <div><b>{{ item.inc_exp_title }}</b></div>
-        <div class="caption"> {{ item.inc_exp_note }} </div>
-      </v-col>
-      <v-col cols="auto" class="align-self-center">
-        <b :class="item.inc_exp_group == 'income'? 'success--text':'error--text'">{{ item.inc_exp_amount | numeral('0,0.00') }} </b>
-        <div class="caption">{{ new Date(item.inc_exp_date).toLocaleDateString() }}</div>
-      </v-col>
-    </v-row>
+  <v-card min-height="40vh" class="pa-4">
+    <div v-if="datas && datas.length>0">
+      <v-row v-for="(item,index) in datas" :key="index">
+        <v-col v-if="item.type&&item.type.length > 0" cols="auto">
+          <v-btn :class="item.type[0].inc_exp_type_color" :elevation="0" fab dark small>
+            <v-icon dark small> {{ item.type[0].inc_exp_type_icon }} </v-icon>
+          </v-btn>
+        </v-col>
+        <v-col class="align-self-center">
+          <div><b>{{ item.inc_exp_title }}</b></div>
+          <div class="caption"> หมายเหตุ: {{ item.inc_exp_note }} </div>
+        </v-col>
+        <v-col cols="auto" class="align-self-center">
+          <b :class="item.inc_exp_group == 'income'? 'success--text':'error--text'">{{ item.inc_exp_amount | numeral('0,0.00') }} </b>
+          <div class="caption">{{ new Date(item.inc_exp_date).toLocaleDateString() }}</div>
+        </v-col>
+        <v-col class="pt-0" cols="12">
+          <v-divider></v-divider>
+        </v-col>
+      </v-row>
+    </div>
   </v-card>
 
 </div>
