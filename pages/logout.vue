@@ -1,13 +1,17 @@
 <template>
-  <div>
-    logout
-  </div>
+<div>
+  logout
+</div>
 </template>
 
 <script>
-  export default {
-    
-  }
+export default {
+  layout: 'blank',
+  created() {
+    this.$auth.logout()
+    this.$router.replace('/')
+  },
+}
 </script>
 
 <style lang="scss" scoped>

@@ -37,6 +37,7 @@ export default {
     { src: '~plugins/VueNumeral.js', mode: 'client' },
     { src: '~plugins/draggable.js', mode: 'client' },
     { src: '~plugins/sweetalert.js', mode: 'client' },
+    // { src: '~plugins/chart.js', mode: 'client' }
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -80,47 +81,31 @@ export default {
       callback: '/login',
       home: '/'
     },
-    // localStorage: {
-    //   prefix: 'auth.'
-    // },
-    token: {
-      prefix: process.env.AUTH_TOKEN_PREFIX
-    },
-    cookie: {
-      prefix: 'o2.',
-      options: {
-        domain: process.env.AUTH_DOMAIN
-      }
-    },
     strategies: {
       local: {
         endpoints: {
           login: {
-            headers: { 'Content-Type': 'multipart/form-data' },
-            url: '/btv-api/util/user/authenticate',
+            // headers: { 'Content-Type': 'multipart/form-data' },
+            url: url_api + '/auth/token',
             method: 'post',
-            propertyName: 'access_token'
+            propertyName: 'payload.token'
           },
           user: {
-            url: '/btv-api/util/user/info',
+            url: url_api + '/auth/user',
             method: 'get',
-            propertyName: 'payload'
+            propertyName: 'payload.member'
           }
-        },
-        tokenRequired: true,
-        tokenType: 'bearer',
-        globalToken: true,
-        autoFetchUser: true
+        }
       }
     },
   },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
-    baseURL: '/',
+    baseURL: base_url,
     proxyHeaders: false,
     credentials: false,
-    proxy: (process.env.NODE_ENV !== 'production')
+    proxy: false
   },
 
   proxy: {
@@ -157,7 +142,7 @@ export default {
           success: colors.green.accent3
         },
         light: {
-          primary: '#0D47A1'
+          primary: '#0d47a1',
         }
       }
     }

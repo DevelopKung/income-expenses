@@ -2,3 +2,38 @@
 //
 // The variables you want to modify
 // $font-size-root: 20px;
+
+.bg-color-primary {
+  color: #fff;
+  background: linear-gradient(#2f63c4 10%, #114cb9);
+}
+
+.bg-color-purple {
+  color: #fff;
+  background: linear-gradient(#d563f1 10%, #c625ee);
+}
+
+.bg-color-success {
+  color: #fff;
+  background: linear-gradient(#4df1e1 10%, #009688);
+}
+.bg-color-danger {
+  color: #fff;
+  background: linear-gradient(#f15b8d 10%, #e91e63);
+}
+.bg-color-info {
+  color: #fff;
+  background: linear-gradient(#3adbf0 10%, #00bcd4);
+}
+.bg-color-error {
+  color: #fff;
+  background: linear-gradient(#ff5252  10%, #ff2828 );
+}
+.bg-color-warning {
+  color: #fff;
+  background: linear-gradient(#f7b86c   10%, #fb8c00  );
+}
+
+.cursor {
+  cursor: pointer;
+}
