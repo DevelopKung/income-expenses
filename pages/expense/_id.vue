@@ -28,6 +28,9 @@
               <v-textarea v-model="form.inc_exp_note" label="โน๊ต บันทึก" placeholder="โน๊ต บันทึก" rows="1" prepend-inner-icon="mdi-comment" outlined></v-textarea>
               <v-text-field v-show="false" v-model="form.inc_exp_type" outlined dense :rules="[rules.required]"></v-text-field>
               <v-row>
+                <v-col cols="12">
+                  <span>ประเภทการชำระเงิน</span>
+                </v-col>
                 <v-col cols="auto" v-for="(list,index) in lists_type" :key="index" @click="setTypes(list.inc_exp_type_id)">
                   <v-btn :elevation="0" fab dark small :class="form.inc_exp_type == list.inc_exp_type_id ? list.inc_exp_type_color + ' active': list.inc_exp_type_color">
                     <v-icon dark small>{{ list.inc_exp_type_icon }}</v-icon>
@@ -133,7 +136,7 @@
             title: 'สำเร็จ',
           }).then((result) => {
             if (result.isConfirmed || !result.isConfirmed) {
-              this.$router.back()
+              this.$router.replace('/expense')
             }
           })
         } else {
@@ -152,7 +155,7 @@
             title: 'สำเร็จ',
           }).then((result) => {
             if (result.isConfirmed || !result.isConfirmed) {
-              this.$router.back()
+              this.$router.replace('/expense')
             }
           })
         } else {
