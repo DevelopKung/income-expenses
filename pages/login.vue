@@ -107,7 +107,7 @@ export default {
     },
     async registerData(){
       let res = await this.register(this.form_regis)
-      if (res.status) {
+      if (res.status == true) {
         Swal.fire({
           icon: 'success',
           title: 'สำเร็จ',
