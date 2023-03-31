@@ -8,7 +8,7 @@ export const actions = {
       const res = await this.$axios.$post(url, form);
       return res
     } catch (error) {
-      const res = error.response.data || error
+      const res = error.response || error
       return res
     }
   },
