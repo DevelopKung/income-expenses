@@ -29,7 +29,7 @@
               <v-text-field v-show="false" v-model="form.inc_exp_type" outlined dense :rules="[rules.required]"></v-text-field>
               <v-row>
                 <v-col cols="auto" v-for="(list,index) in lists_type" :key="index" @click="setTypes(list.inc_exp_type_id)">
-                  <v-btn :elevation="0" fab dark small :class="form.inc_exp_type == list.inc_exp_type_value ? list.inc_exp_type_color + ' active': list.inc_exp_type_color">
+                  <v-btn :elevation="0" fab dark small :class="form.inc_exp_type == list.inc_exp_type_id ? list.inc_exp_type_color + ' active': list.inc_exp_type_color">
                     <v-icon dark small>{{ list.inc_exp_type_icon }}</v-icon>
                   </v-btn>
                 </v-col>
