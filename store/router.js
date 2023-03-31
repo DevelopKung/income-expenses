@@ -1,6 +1,6 @@
 const url = process.env.NODE_ENV == 'development' ? process.env.URL_API_DEV + '/' : process.env.URL_API + '/';
 export default {
-  register: url + 'register',
+  register: url + 'register', 
   type: url + 'income-expense-type/',
   group: url + 'income-expense-group/',
   income_expense: {
