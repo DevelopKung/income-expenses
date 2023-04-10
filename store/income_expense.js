@@ -72,7 +72,8 @@ export const actions = {
       const res = await this.$axios.$delete(url, config);
       return res
     } catch (error) {
-      const res = error.response.data || error
+      console.log(error);
+      const res = error.response.data || {status:false, message:error}
       return res
     }
   },

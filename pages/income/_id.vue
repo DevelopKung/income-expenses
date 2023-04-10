@@ -45,7 +45,7 @@
               </v-btn>
               <v-btn color="primary" class="mx-1" depressed rounded :disabled="!form_valid" @click="saveForm(form)">
                 <v-icon left small>fa fa-check</v-icon>
-                บันทึก
+                {{ (this.id && this.id != 'new')? 'อัพเดท': 'บันทึก' }}
               </v-btn>
             </div>
           </v-form>
@@ -57,10 +57,7 @@
 </template>
 
 <script>
-import {
-  mapActions,
-  mapGetters
-} from 'vuex'
+import { mapActions, mapGetters } from 'vuex'
 import Swal from 'sweetalert2'
 
 export default {
@@ -77,7 +74,7 @@ export default {
       id: this.$route.params.id,
       rules: {
         required: value => !!value || "กรุณากรอกข้อมูล"
-      }
+      },
     }
   },
   computed: {
@@ -124,7 +121,7 @@ export default {
       if (this.id == 'new') {
         await this.createData(form)
       } else {
-        await this.updateData(form)
+        await this.updateData(form._id, form)
       }
     },
 
@@ -147,8 +144,8 @@ export default {
       }
     },
 
-    async updateData(form) {
-      const res = await this.create(form)
+    async updateData(id, form) {
+      const res = await this.update({id, form})
       if (res.status == true) {
         Swal.fire({
           icon: 'success',

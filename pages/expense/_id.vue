@@ -45,7 +45,7 @@
                 </v-btn>
                 <v-btn color="primary" class="mx-1" depressed rounded :disabled="!form_valid" @click="saveForm(form)">
                   <v-icon left small>fa fa-check</v-icon>
-                  บันทึก
+                  {{ (this.id && this.id != 'new')? 'อัพเดท': 'บันทึก' }}
                 </v-btn>
               </div>
             </v-form>
@@ -124,7 +124,7 @@
         if (this.id == 'new') {
           await this.createData(form)
         } else {
-          await this.updateData(form)
+        await this.updateData(form._id, form)
         }
       },
   
@@ -147,8 +147,8 @@
         }
       },
   
-      async updateData(form) {
-        const res = await this.create(form)
+      async updateData(id, form) {
+        const res = await this.update({id, form})
         if (res.status == true) {
           Swal.fire({
             icon: 'success',

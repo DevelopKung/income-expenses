@@ -9,7 +9,6 @@
               <v-icon :color="tab == 0?'info': ''">fas fa-border-all</v-icon>
             </v-col>
             <v-col :class="tab == 1?'active-success': ''" class="br-l-r" @click="pushPath('/income', 1)">
-              <!-- <v-icon :color="tab == 1?'success': ''"> fas fa-plus </v-icon> -->
               <v-badge bordered offset-x="8" offset-y="2" color="success" icon="mdi-plus" overlap>
                 <v-icon :color="tab == 1?'success': ''">fas fa-chart-line</v-icon> 
               </v-badge>
@@ -23,9 +22,6 @@
         </v-card>
       </v-col>
     </v-row>
-    <!-- <v-btn class="btn-add bg-color" :elevation="0" fab dark>
-      <v-icon dark> mdi-plus </v-icon>
-    </v-btn> -->
   </v-footer>
 </div>
 </template>
@@ -59,7 +55,7 @@ export default {
       await this.setTab(0)
     } else if (this.$route.path == '/income') {
       await this.setTab(1)
-    } else {
+    } else if(this.$route.path == '/expense') {
       await this.setTab(2)
     }
   },

@@ -1,5 +1,6 @@
 <template>
 <div>
+  <div class="bg-herder"></div>
   <v-app>
     <div v-if="$auth.user" class="d-flex justify-space-between align-center pa-4">
       <div class="d-flex">
@@ -36,14 +37,6 @@
       <Nuxt />
     </div>
     <Footer />
-    <!-- <Navbar :title="'รายรับ รายจ่าย'">
-      <div class="mt-12 bg-img">
-        <v-container>
-          <Nuxt />
-        </v-container>
-        <Footer />
-      </div>
-    </Navbar> -->
   </v-app>
 </div>
 </template>
@@ -75,6 +68,13 @@ v-app,
   background: #eeeeee7c;
 }
 
+.bg-herder{
+  position: absolute;
+  width: 100%;
+  height: 20vh;
+  background: linear-gradient(140deg, #2daae45a 10%, #cb68fd 50%, #f87550);
+  border-radius: 0 0 30px 30px !important;
+}
 .bg-img {
   background-image: url('https://img.freepik.com/free-vector/technology-background-with-hexagonal-net_79603-303.jpg');
   width: 100%;
