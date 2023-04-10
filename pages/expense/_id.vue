@@ -45,7 +45,7 @@
                 </v-btn>
                 <v-btn color="primary" class="mx-1" depressed rounded :disabled="!form_valid" @click="saveForm(form)">
                   <v-icon left small>fa fa-check</v-icon>
-                  {{ (this.id && this.id != 'new')? 'อัพเดท': 'บันทึก' }}
+                  {{ (id && id != 'new')? 'อัพเดท': 'บันทึก' }}
                 </v-btn>
               </div>
             </v-form>
