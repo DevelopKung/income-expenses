@@ -1,5 +1,5 @@
 <template>
-<div class="card-box">
+<div v-if="lists&&lists.length" class="card-box">
   <div class="bg-color text-center">
     <div class="white--text">ยอดรวม</div>
     <h1 class="ml-2 white--text py-4">{{ totalAmount | numeral('0,0.00') }} บาท</h1>
@@ -64,25 +64,37 @@ export default {
     }),
     
     qtyExpense(){
-      let lists = Object.assign([], this.lists)
-      return lists.filter(x => x.inc_exp_group == 'expense').length
+      if (this.lists&&this.lists.length>0) {
+        let lists = Object.assign([], this.lists)
+        return lists.filter(x => x.inc_exp_group == 'expense').length
+      }
+      return 0
     },
 
     qtyIncome(){
-      let lists = Object.assign([], this.lists)
-      return lists.filter(x => x.inc_exp_group == 'income').length
+      if (this.lists&&this.lists.length>0) {
+        let lists = Object.assign([], this.lists)
+        return lists.filter(x => x.inc_exp_group == 'income').length
+      }
+      return 0
     },
 
     totalExpense(){
-      let lists = Object.assign([], this.lists)
-      lists = lists.filter(x => x.inc_exp_group == 'expense').reduce((a, b) => a+b.inc_exp_amount, 0)
-      return lists
+      if (this.lists&&this.lists.length>0) {
+        let lists = Object.assign([], this.lists)
+        lists = lists.filter(x => x.inc_exp_group == 'expense').reduce((a, b) => a+b.inc_exp_amount, 0)
+        return lists
+      }
+      return 0
     },
 
     totalIncome(){
-      let lists = Object.assign([], this.lists)
-      lists = lists.filter(x => x.inc_exp_group == 'income').reduce((a, b) => a+b.inc_exp_amount, 0)
-      return lists
+      if (this.lists&&this.lists.length>0) {
+        let lists = Object.assign([], this.lists)
+        lists = lists.filter(x => x.inc_exp_group == 'income').reduce((a, b) => a+b.inc_exp_amount, 0)
+        return lists
+      }
+      return 0
     },
 
     totalAmount(){
