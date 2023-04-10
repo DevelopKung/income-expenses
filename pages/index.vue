@@ -28,7 +28,7 @@ export default {
       await this.loadData()
     }
   },
-  async created(){
+  async fetch(){
     await this.getData()
   }
 };
