@@ -1,5 +1,5 @@
 <template>
-<div v-if="lists&&lists.length" class="card-box">
+<div class="card-box">
   <div class="bg-color text-center">
     <div class="white--text">ยอดรวม</div>
     <h1 class="ml-2 white--text py-4">{{ totalAmount | numeral('0,0.00') }} บาท</h1>
